@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>New:</strong>
+  <%= @card.new %>
+</p>
+
+<p>
+  <strong>Create:</strong>
+  <%= @card.create %>
+</p>
+
+<p>
+  <strong>Update:</strong>
+  <%= @card.update %>
+</p>
+
+<p>
+  <strong>Destroy:</strong>
+  <%= @card.destroy %>
+</p>
+
+<%= link_to 'Edit', edit_card_path(@card) %> |
+<%= link_to 'Back', cards_path %>
