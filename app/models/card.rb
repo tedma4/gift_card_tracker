@@ -10,13 +10,13 @@ class Card < ActiveRecord::Base
   validate :valid_card
 
   def credit_card
-    ActiveMerchant::Billing::CreditCard.new(
+  	@card ||= ActiveMerchant::Billing::CreditCard.new(
     		first_name: company,
     		last_name: company,
     		month: 1,
     		year: 2025, 
     		verification_value: 123,
-        brand: 'bogus',
+        brand: 'visa',
         number: credit_card_number
     )
   end
