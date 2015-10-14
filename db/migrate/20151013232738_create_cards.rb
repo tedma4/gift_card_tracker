@@ -1,10 +1,8 @@
 class CreateCards < ActiveRecord::Migration
   def change
     create_table :cards do |t|
-      t.string :new
-      t.string :create
-      t.string :update
-      t.string :destroy
+      t.string :company
+      t.decimal :amount, precision: 12, scale: 3
 
       t.timestamps null: false
     end
