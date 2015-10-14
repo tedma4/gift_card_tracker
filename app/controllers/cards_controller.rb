@@ -25,10 +25,9 @@ class CardsController < ApplicationController
   # POST /cards.json
   def create
     @card = Card.new(card_params)
-
     respond_to do |format|
       if @card.save
-        format.html { redirect_to @card, notice: 'Card was successfully created.' }
+        format.html { redirect_to @card, notice: 'You just added a new giftcard.' }
         format.json { render :show, status: :created, location: @card }
       else
         format.html { render :new }

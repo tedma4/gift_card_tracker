@@ -1,6 +1,8 @@
-class Card < ActiveRecord::Baserequire "active_merchant/billing/rails"
+class Card < ActiveRecord::Base
+  require "active_merchant/billing/rails"
 
   attr_accessor :credit_card_number
+
   validates :credit_card_number, presence: true
   validates :company, presence: true
   validates :amount, presence: true, numericality: { greater_than: 0 }
@@ -9,13 +11,19 @@ class Card < ActiveRecord::Baserequire "active_merchant/billing/rails"
 
   def credit_card
     ActiveMerchant::Billing::CreditCard.new(
-      number:              credit_card_number,
+    		first_name: company,
+    		last_name: company,
+    		month: 1,
+    		year: 2025, 
+    		verification_value: 123,
+        brand: 'bogus',
+        number: credit_card_number
     )
   end
 
   def valid_card
     if !credit_card.valid?
-      errors.add(:base, "The credit card information you provided is not valid.  Please double check the information you provided and then try again.")
+      errors.add(:base, "The bogus credit card you added doesn't fly. #{credit_card.errors}")
       false
     else
       true
@@ -24,10 +32,10 @@ class Card < ActiveRecord::Baserequire "active_merchant/billing/rails"
 
   def process
     if valid_card
-      response = GATEWAY.authorize(amount * 100, credit_card)
+      response = GATEWAY.refund(amount * 100, credit_card)
       if response.success?
         transaction = GATEWAY.capture(amount * 100, response.authorization)
-        if !transaction.success?
+        unless transaction.success?
           errors.add(:base, "The credit card you provided was declined.  Please double check your information and try again.") and return
           false
         end

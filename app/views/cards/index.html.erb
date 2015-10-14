@@ -5,10 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>New</th>
-      <th>Create</th>
-      <th>Update</th>
-      <th>Destroy</th>
+      <th>Company</th>
+      <th>Card Number</th>
+      <th>Balance</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +15,9 @@
   <tbody>
     <% @cards.each do |card| %>
       <tr>
-        <td><%= card.new %></td>
-        <td><%= card.create %></td>
-        <td><%= card.update %></td>
-        <td><%= card.destroy %></td>
+        <td><%= card.company %></td>
+        <td><%= card.credit_card_number %></td>
+        <td><%= card.amount %></td>
         <td><%= link_to 'Show', card %></td>
         <td><%= link_to 'Edit', edit_card_path(card) %></td>
         <td><%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
