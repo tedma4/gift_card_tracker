@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 20151013232738) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "company"
-    t.decimal  "amount",     precision: 12, scale: 3
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.integer  "amount",     default: 25
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
 end

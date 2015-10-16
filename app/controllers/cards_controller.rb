@@ -27,6 +27,7 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
     respond_to do |format|
       if @card.save
+        # @card.add_credit
         format.html { redirect_to @card, notice: 'You just added a new giftcard.' }
         format.json { render :show, status: :created, location: @card }
       else
@@ -68,6 +69,6 @@ class CardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
-      params.require(:card).permit(:company, :amount, :credit_card_number)
+      params.require(:card).permit(:company, :amount, :credit_card_number, :add_credit, :remove_credit)
     end
 end

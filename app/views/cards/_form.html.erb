@@ -2,7 +2,6 @@
   <% if @card.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:</h2>
-
       <ul>
       <% @card.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -15,13 +14,17 @@
     <%= f.label :company %><br>
     <%= f.text_field :company %>
   </div>
+  <div class="field">
+    <%= f.label :credit_card_number %><br>
+    <%= f.text_field :credit_card_number %>
+  </div>
+    <!--<div class="field">-->
+      <%#= f.label :add_credit %><br>
+      <!--<%#= f.text_field :add_credit %>-->
+    <!--</div>-->
     <div class="field">
-      <%= f.label :credit_card_number %><br>
-      <%= f.text_field :credit_card_number %>
-    </div>
-    <div class="field">
-      <%= f.label :amount %><br>
-      <%= f.text_field :amount %>
+      <%= f.label :remove_credit %><br>
+      <%= f.text_field :remove_credit %>
     </div>
   <div class="actions">
     <%= f.submit %>
