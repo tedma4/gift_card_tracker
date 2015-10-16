@@ -1,9 +1,7 @@
 class Card < ActiveRecord::Base
   require "active_merchant/billing/rails"
 
-  attr_accessor :credit_card_number
-  attr_accessor :add_credit
-  attr_accessor :remove_credit
+  attr_accessor :credit_card_number, :add_credit, :remove_credit
 
   validates :credit_card_number, presence: true, on: :create
   validates :company, presence: true
@@ -43,21 +41,4 @@ class Card < ActiveRecord::Base
     end
   end
 
-  # def process
-  #   if valid_card
-  #     response = GATEWAY.refund(amount * 100, credit_card)
-  #     if response.success?
-  #       transaction = GATEWAY.capture(amount * 100, response.authorization)
-  #       unless transaction.success?
-  #         errors.add(:base, "The credit card you provided was declined.  Please double check your information and try again.") and return
-  #         false
-  #       end
-  #       update_columns({authorization_code: transaction.authorization, success: true})
-  #       true
-  #     else
-  #       errors.add(:base, "The credit card you provided was declined.  Please double check your information and try again.") and return
-  #       false
-  #     end
-  #   end
-  # end
 end
