@@ -14,7 +14,7 @@ credit_card = ActiveMerchant::Billing::CreditCard.new(:first_name => 'Bob', :las
 # Validating the card automatically detects the card type
 if credit_card.validate.empty?
   # Capture $10 from the credit card
-  response = gateway.refund(amount, credit_card)
+  response = gateway.purchase(amount, credit_card)
 
   if response.success?
     puts "Successfully charged $#{sprintf("%.2f", amount / 100)} to the credit card #{credit_card.display_number}"

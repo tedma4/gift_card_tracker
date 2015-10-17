@@ -8,14 +8,21 @@
           <%= f.label :company, class:"control-label" %>
           <%= f.text_field :company, class: "form-control" %>
         </div>
-        <div class="form-group">
-          <%= f.label :add_credit, class:"control-label" %>
-          <%= f.text_field :add_credit, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :remove_credit, class: "control-label" %>
-          <%= f.text_field :remove_credit, class: "form-control" %>
-        </div>
+        <% if params[:action] == 'new' %>
+            <div class="form-group">
+              <%= f.label :cc_num, class:"control-label" %>
+              <%= f.text_field :cc_num, class: "form-control" %>
+            </div>
+        <% elsif params[:action] == 'edit' %>
+            <div class="form-group">
+              <%= f.label :add_credit, class:"control-label" %>
+              <%= f.text_field :add_credit, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :remove_credit, class: "control-label" %>
+              <%= f.text_field :remove_credit, class: "form-control" %>
+            </div>
+        <% end %>
       </div>
       <div class="modal-footer">
         <%= f.submit class: "btn btn-primary" %>

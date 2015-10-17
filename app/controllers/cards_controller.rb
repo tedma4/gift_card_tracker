@@ -26,6 +26,14 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
     
     @card.update_attributes(card_params)
+    if @card.add_credit
+      flash[:success] = "You successfully added credit to the card"
+      redirect_to root_path
+    end
+
+    if @card.remove_credit
+      flash[:error] = "Sorry, You do not have enough credit for that"
+    end
   end
 
   def delete
@@ -40,6 +48,6 @@ class CardsController < ApplicationController
 
 private
   def card_params
-    params.require(:card).permit(:company, :amount, :credit_card_number, :add_credit, :remove_credit)
+    params.require(:card).permit(:company, :amount, :cc_num, :add_credit, :remove_credit)
   end
 end
