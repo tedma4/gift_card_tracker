@@ -1,2 +1,2 @@
-$('#card-form').html("<%= j (render 'form') %>");
-$('#card-form').slideDown(350);
+$("#card-modal").html("<%= escape_javascript(render 'new') %>")
+$("#card-modal").modal("show")

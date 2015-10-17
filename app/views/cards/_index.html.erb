@@ -1,0 +1,8 @@
+<% @cards.each do |card| %>
+  <tr>
+    <td><%= card.company %></td>
+    <td><%= number_to_currency card.amount %></td>
+    <td><%= link_to "Edit", edit_card_path(card), remote: true, class: "btn btn-default" %></td>
+    <td><%= link_to "Delete", card_delete_path(card), remote: true, class: "btn btn-danger" %></td>
+  </tr>
+<% end %>

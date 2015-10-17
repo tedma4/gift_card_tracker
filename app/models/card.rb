@@ -8,8 +8,8 @@ class Card < ActiveRecord::Base
   validates :amount, numericality: { greater_than: 0 }
 
   validate :valid_card, on: :create
-  # validates :add_credit, numericality: { greater_than: 0 }, on: :update, allow_blank: true
-  # validates :remove_credit, numericality: { greater_than: 0 }, on: :update, allow_blank: true
+  validates :add_credit, numericality: { greater_than: 0 }, on: :update, allow_blank: true
+  validates :remove_credit, numericality: { greater_than: 0 }, on: :update, allow_blank: true
 
   def credit_card
   	@card = ActiveMerchant::Billing::CreditCard.new(
@@ -37,8 +37,7 @@ class Card < ActiveRecord::Base
     if  self.amount > value.to_i
       self.update_attribute(:amount, self.amount - value.to_i)
     else
-      errors.add(:base, "The credit card you provided was declined.  Please double check your information and try again.") and return
+      errors.add(:base, "The credit card you provided was declined.  Please double check your information and try again.")
     end
   end
-
 end

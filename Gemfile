@@ -23,7 +23,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem "activemerchant", '1.54.0'
 gem 'figaro'
-gem 'responders', '~> 2.0'
+gem 'bootstrap-sass', '~> 3.3.5.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -40,7 +41,7 @@ group :development do
 end
 group :production do
 	gem 'pg'
-	gem 'rails_12factor'
+	# gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

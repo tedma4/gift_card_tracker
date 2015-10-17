@@ -12,5 +12,7 @@ test:
 production:
   adapter: postgresql
   database: my_database_production
+  username: rails
+  password: ENV['APP_DATABASE_PASSWORD']
   pool: 5
   timeout: 5000

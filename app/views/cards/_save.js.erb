@@ -1,0 +1,9 @@
+$("ul.errors").html("")
+<% if @card.errors.any? %>
+  <% @card.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+  $(".card-index").html("<%= escape_javascript(render 'index') %>")
+  $("#card-modal").modal("hide")
+<% end %>
