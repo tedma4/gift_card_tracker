@@ -28,4 +28,4 @@ production:
   port: 3306
   username: Ted
   password: tm671216
-  host: aa1mbyfhwut79il.c97qscmi7euu.us-west-1.rds.amazonaws.com:3306
+  host: aa1mbyfhwut79il.c97qscmi7euu.us-west-1.rds.amazonaws.com
