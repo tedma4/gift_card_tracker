@@ -26,6 +26,6 @@ production:
   adapter: mysql2
   encoding: utf8
   port: 3306
-  username: Nfuseuser
+  username: Ted
   password: tm671216
-  # host: aakbl8vbkp8q3i.c97qscmi7euu.us-west-1.rds.amazonaws.com
+  host: aa1mbyfhwut79il.c97qscmi7euu.us-west-1.rds.amazonaws.com:3306
