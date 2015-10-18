@@ -44,4 +44,38 @@ class Card < ActiveRecord::Base
       errors.add :base, "Sorry, You only have #{self.amount} credits left. You need to add some more credits before you can do that."
     end
   end
+
+  def can_do
+    response = GATEWAY.purchase(value, @card)
+  end
 end
+
+# def spend_credit
+#   if valid_card && self.amount >= value.to_i
+#     response = GATEWAY.purchase(value, credit_card)
+#     if response.success?
+#       transaction = GATEWAY.capture(value, response.authorization)
+#       if !transaction.success?
+#         errors.add(:base, "Sorry, You only have #{self.amount} credits left. You need to add some more credits before you can do that")
+#       end
+#       self.update_attribute(:amount, self.amount - value.to_i)
+#     else
+#       errors.add(:base, "Sorry, You only have #{self.amount} credits left. You need to add some more credits before you can do that.")
+#     end
+#   end
+# end
+
+# def make_credit
+#   if valid_card
+#     response = GATEWAY.purchase(value, credit_card)
+#     if response.success?
+#       transaction = GATEWAY.capture(value, response.authorization)
+#       if !transaction.success?
+#         errors.add(:base, "Your card was declined")
+#       end
+#       self.update_attribute(:amount, self.amount + value.to_i)
+#     else
+#       errors.add(:base, "Your card was declined")
+#     end
+#   end
+# end

@@ -1,0 +1,10 @@
+branch-defaults:
+  master:
+    environment: giftcardtracker
+global:
+  application_name: gift_card_tracker
+  default_ec2_keyname: null
+  default_platform: Ruby 2.0 (Passenger Standalone)
+  default_region: us-west-1
+  profile: eb-cli
+  sc: git
